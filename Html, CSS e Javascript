@@ -1,3 +1,155 @@
 Segue link com o meu chat utilizando as respectivas linguagens: Html, css e JavaScript.
 
 https://codepen.io/Wallace-Mendes/pen/wvRewaM
+
+
+HTML
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atendimento On-line</title>
+</head>
+<body>
+  <div id="principal">
+    <header class="Titulo">
+      <h1>Atendimento On-line</h1>
+    </header>
+  
+    <form method="post" action="https://postman-echo.com/post">
+      <div class="atendente">
+        <label for="Atendente1">Atendente diz:</label>
+        <p>Olá! Como posso ajudá-lo?</p>
+      </div>
+  
+      <div class="cliente">
+        <label for="Cliente3">Você diz:</label>
+        <p>Gostaria de pedir uma pizza sabor quatro queijos</p>
+      </div>
+    </form>
+
+    <div class="Enviar-mensagem">
+      <input type="text" id="Cliente3" name="Cliente3" class="Cliente3" placeholder="Digite sua mensagem" required>
+      <button class="Botao" type="submit">Enviar</button>
+    </div>
+  </div>
+</body>
+</html>
+
+CSS
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden; 
+}
+
+#principal {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Titulo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.atendente, .cliente {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 80%; 
+  overflow: hidden; 
+  white-space: pre-wrap; 
+}
+
+.atendente {
+  background-color: #007bff;
+  color: #fff;
+  text-align: left;
+  align-self: flex-start; 
+}
+
+.cliente {
+  background-color: #f2f2f2;
+  text-align: right;
+  align-self: flex-end; 
+}
+
+.Enviar-mensagem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Cliente3 {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.Botao {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.Botao:hover {
+  background-color: #0056b3;
+}
+
+.cliente {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  flex: 1; 
+  width: 100%; 
+}
+
+
+JavaScript
+
+
+function rolarParaBaixo() {
+  var areaMensagens = document.querySelector('.cliente');
+  areaMensagens.scrollTop = areaMensagens.scrollHeight;
+}
+
+var botaoEnviar = document.querySelector('.Botao');
+botaoEnviar.addEventListener('click', function () {
+  var mensagem = document.getElementById('Cliente3').value;
+  var areaMensagens = document.querySelector('.cliente');
+  var novaMensagem = document.createElement('p');
+  novaMensagem.textContent = mensagem;
+  areaMensagens.appendChild(novaMensagem);
+  rolarParaBaixo();
+  document.getElementById('Cliente3').value = ''; 
+});
+
+window.addEventListener('load', function () {
+  rolarParaBaixo();
+});
